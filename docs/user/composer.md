@@ -44,13 +44,17 @@ Shortcuts while a turn is running:
 
 ```json
 {
-  "key": "mod+enter",
-  "command": "thread.steerQueuedMessage",
-  "when": "composerFocus && turnRunning && composerEmpty"
+	"key": "mod+enter",
+	"command": "thread.steerQueuedMessage",
+	"when": "composerFocus && turnRunning && composerEmpty"
 }
 ```
 
 - **Edit most recently queued message**: `Option+Up` (macOS) or `Alt+Up` (Windows/Linux) at the start of the composer (`thread.editQueuedMessage`).
+
+### Take back a steer
+
+Some agents read a steer at their next step, so it shows **Steer · waiting to be read** until then. With Claude you can withdraw it in that window: the message leaves the turn and its text returns to the composer, where you can edit and resend it or delete it. Once the agent has read it, the steer stays in the turn.
 
 Slash commands (such as `/compact` or `/context`) wait for the current turn to finish rather than steering into it. [Goal](#goals) commands are the exception.
 
@@ -66,12 +70,12 @@ Mobile keeps local copies of draft attachments so you can preview them and queue
 
 ```json
 {
-  "providerInstances": {
-    "codex": {
-      "driver": "codex",
-      "config": { "customModels": [{ "slug": "gpt-5.5", "name": "Team GPT" }] }
-    }
-  }
+	"providerInstances": {
+		"codex": {
+			"driver": "codex",
+			"config": { "customModels": [{ "slug": "gpt-5.5", "name": "Team GPT" }] }
+		}
+	}
 }
 ```
 
